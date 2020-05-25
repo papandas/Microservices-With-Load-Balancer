@@ -1,0 +1,41 @@
+version: '3'
+services:
+  lb:
+    image: haproxy
+    ports:
+      - "8080:8080"
+    volumes:
+      - ./haproxy:/usr/local/etc/haproxy
+
+  nodeapp1:
+    image: nodeapp
+    ports:
+      - "3001:3001"
+    environment:
+      - APPID=3001
+
+  nodeapp2:
+    image: nodeapp
+    ports:
+      - "3002:3002"
+    environment:
+      - APPID=3002
+    
+  nodeapp3:
+    image: nodeapp
+    ports:
+      - "3003:3003"
+    environment:
+      - APPID=3003
+
+  nodeapp4:
+    image: nodeapp
+    ports:
+      - "3004:3004"
+    environment:
+      - APPID=3004
+    
+  #mongo-express:
+  #    image: mongo-express
+  #    ports:
+  #      - 8081:8081
